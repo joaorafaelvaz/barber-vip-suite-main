@@ -1,0 +1,11 @@
+services:
+  barber-vip:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: barber-vip-app
+    restart: unless-stopped
+    ports:
+      - "3090:80"
+    env_file:
+      - .env.production
