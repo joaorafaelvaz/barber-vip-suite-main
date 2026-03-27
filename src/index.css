@@ -1,0 +1,442 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   VIP Data - Premium Barbearia Design System (REFINADO)
+   Objetivo:
+   - Fundo preto premium com gradiente sutil
+   - Cards com contraste elegante
+   - Textos em cinza suave (não branco estourado)
+   - Dourado champagne ajustável (forte/fraco)
+   - Cores de status: verde (bom), vermelho (ruim), dourado (neutro), azul (info)
+   Todas as cores em HSL
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* --------------------------------------------------------
+       LIGHT MODE (mantido, mas já alinhado e mais elegante)
+       -------------------------------------------------------- */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Dourado champagne (menos amarelo aberto) */
+    --primary: 42 65% 48%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 25%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 42 65% 48%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 68% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 42 65% 48%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 42 65% 48%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 12%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 42 65% 48%;
+
+    /* Custom tokens */
+    --gold: 42 65% 48%;
+    --gold-light: 45 80% 58%;
+    --gold-dark: 40 60% 38%;
+    --gold-glow: 43 90% 55%;
+
+    /* Status (light) - fechados */
+    --success: 156 72% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 42 85% 52%;
+    --warning-foreground: 0 0% 8%;
+
+    --info: 205 70% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --danger: 0 68% 52%;
+    --danger-foreground: 0 0% 100%;
+  }
+
+  /* ----------------------------------------------------------
+     DARK MODE (PRIORIDADE DO SEU PEDIDO)
+     Fundo preto premium + textos cinza suave + cards contrastados
+     ---------------------------------------------------------- */
+  .dark {
+    /* Fundo bem escuro, sem "preto chapado" */
+    --background: 220 15% 4%;
+    /* Texto principal em cinza suave (não branco puro) */
+    --foreground: 0 0% 86%;
+
+    /* Cards com contraste (mais claros que o fundo) */
+    --card: 220 14% 7%;
+    --card-foreground: 0 0% 86%;
+
+    --popover: 220 14% 7%;
+    --popover-foreground: 0 0% 86%;
+
+    /* Dourado champagne refinado (mais fechado) */
+    --primary: 43 72% 54%;
+    --primary-foreground: 0 0% 8%;
+
+    /* Superfícies secundárias (abas, filtros) */
+    --secondary: 220 12% 10%;
+    --secondary-foreground: 0 0% 78%;
+
+    /* Muted (textos secundários e fundos suaves) */
+    --muted: 220 12% 10%;
+    --muted-foreground: 0 0% 62%;
+
+    --accent: 43 72% 54%;
+    --accent-foreground: 0 0% 8%;
+
+    /* Vermelho mais fechado */
+    --destructive: 0 70% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Bordas sutis e elegantes */
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 43 72% 54%;
+
+    /* Sidebar */
+    --sidebar-background: 220 14% 6%;
+    --sidebar-foreground: 0 0% 76%;
+    --sidebar-primary: 43 72% 54%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 220 12% 9%;
+    --sidebar-accent-foreground: 0 0% 86%;
+    --sidebar-border: 220 10% 14%;
+    --sidebar-ring: 43 72% 54%;
+
+    /* Custom tokens dark (dourado ajustável) */
+    --gold: 43 72% 54%;
+    --gold-light: 45 88% 64%;
+    --gold-dark: 41 60% 40%;
+    --gold-glow: 43 100% 60%;
+
+    /* Status dark (fechados) */
+    --success: 156 78% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 42 92% 52%;
+    --warning-foreground: 0 0% 10%;
+
+    --info: 205 78% 54%;
+    --info-foreground: 0 0% 100%;
+
+    --danger: 0 70% 52%;
+    --danger-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  /* Fundo premium com gradiente e vinheta sutil (dark) */
+  .dark body {
+    background:
+      radial-gradient(1200px 600px at 20% -10%, hsl(var(--gold) / 0.08), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, hsl(var(--info) / 0.06), transparent 55%),
+      linear-gradient(180deg, hsl(220 15% 4%) 0%, hsl(220 15% 3%) 60%, hsl(220 15% 4%) 100%);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: hsl(var(--muted-foreground) / 0.25);
+    transition: background-color 0.2s;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+  }
+
+  /* Focus ring premium (dourado) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  /* ============================================================
+     TIPOGRAFIA / HIERARQUIA
+     ============================================================ */
+
+  /* Texto principal suavizado (pra trocar "branco estourado") */
+  .text-soft {
+    color: hsl(var(--foreground) / 0.92);
+  }
+
+  /* Texto secundário elegante */
+  .text-dim {
+    color: hsl(var(--muted-foreground) / 0.92);
+  }
+
+  /* ============================================================
+     GRADIENTES / BRILHO / SOMBRAS
+     ============================================================ */
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)) 0%, hsl(var(--gold)) 50%, hsl(var(--gold-light)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)) 0%, hsl(var(--gold)) 55%, hsl(var(--gold-light)) 100%);
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, hsl(220 14% 6%) 0%, hsl(220 14% 8%) 100%);
+  }
+
+  /* Sombra premium geral (cards) */
+  .shadow-vip {
+    box-shadow:
+      0 10px 30px -18px rgba(0, 0, 0, 0.85),
+      0 2px 10px -6px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Brilho dourado sutil */
+  .shadow-gold {
+    box-shadow:
+      0 10px 26px -18px hsl(var(--gold) / 0.35),
+      0 2px 10px -8px hsl(var(--gold) / 0.22);
+  }
+
+  /* Brilho dourado forte (só em destaque) */
+  .shadow-gold-glow {
+    box-shadow:
+      0 0 26px -10px hsl(var(--gold-glow) / 0.55),
+      0 14px 40px -22px hsl(var(--gold) / 0.45);
+  }
+
+  /* Brilhos por status */
+  .shadow-success-glow {
+    box-shadow:
+      0 0 20px -10px hsl(var(--success) / 0.55),
+      0 12px 30px -22px hsl(var(--success) / 0.35);
+  }
+
+  .shadow-danger-glow {
+    box-shadow:
+      0 0 20px -10px hsl(var(--danger) / 0.55),
+      0 12px 30px -22px hsl(var(--danger) / 0.35);
+  }
+
+  .shadow-warning-glow {
+    box-shadow:
+      0 0 20px -10px hsl(var(--warning) / 0.5),
+      0 12px 30px -22px hsl(var(--warning) / 0.3);
+  }
+
+  .shadow-info-glow {
+    box-shadow:
+      0 0 20px -10px hsl(var(--info) / 0.5),
+      0 12px 30px -22px hsl(var(--info) / 0.3);
+  }
+
+  /* ============================================================
+     CARDS / GLASS / BORDAS
+     ============================================================ */
+
+  /* Glass mais premium (menos “leitoso”) */
+  .glass {
+    @apply backdrop-blur-md border;
+    background: hsl(var(--card) / 0.78);
+    border-color: hsl(var(--border) / 0.65);
+  }
+
+  /* Card VIP com brilho interno sutil e contraste */
+  .card-vip {
+    @apply border rounded-xl;
+    background:
+      radial-gradient(600px 120px at 20% 0%, hsl(var(--gold) / 0.1), transparent 55%),
+      linear-gradient(180deg, hsl(var(--card)) 0%, hsl(220 14% 6%) 100%);
+    border-color: hsl(var(--border) / 0.7);
+    box-shadow:
+      0 10px 30px -18px rgba(0, 0, 0, 0.85),
+      0 1px 0 0 hsl(0 0% 100% / 0.04) inset;
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold) / 0.45);
+  }
+
+  /* ============================================================
+     HOVERS / MICROINTERAÇÕES ("mexe um pouco")
+     ============================================================ */
+
+  .hover-lift {
+    @apply transition-all duration-200;
+    transform: translateY(0);
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Hover com acento dourado (pra cards clicáveis) */
+  .hover-gold {
+    @apply transition-all duration-200;
+  }
+  .hover-gold:hover {
+    border-color: hsl(var(--gold) / 0.45);
+    box-shadow:
+      0 10px 26px -18px hsl(var(--gold) / 0.35),
+      0 2px 10px -8px hsl(var(--gold) / 0.22);
+  }
+
+  /* ============================================================
+     STATUS (cores consistentes no sistema)
+     ============================================================ */
+
+  .badge-success {
+    background: hsl(var(--success) / 0.14);
+    color: hsl(var(--success));
+    border: 1px solid hsl(var(--success) / 0.25);
+  }
+
+  .badge-danger {
+    background: hsl(var(--danger) / 0.14);
+    color: hsl(var(--danger));
+    border: 1px solid hsl(var(--danger) / 0.25);
+  }
+
+  .badge-warning {
+    background: hsl(var(--warning) / 0.16);
+    color: hsl(var(--warning));
+    border: 1px solid hsl(var(--warning) / 0.25);
+  }
+
+  .badge-info {
+    background: hsl(var(--info) / 0.14);
+    color: hsl(var(--info));
+    border: 1px solid hsl(var(--info) / 0.25);
+  }
+
+  .ring-success {
+    box-shadow: 0 0 0 2px hsl(var(--success) / 0.35);
+  }
+  .ring-danger {
+    box-shadow: 0 0 0 2px hsl(var(--danger) / 0.35);
+  }
+  .ring-warning {
+    box-shadow: 0 0 0 2px hsl(var(--warning) / 0.35);
+  }
+  .ring-info {
+    box-shadow: 0 0 0 2px hsl(var(--info) / 0.35);
+  }
+
+  /* ============================================================
+     KPI Value - Responsive
+     ============================================================ */
+  .kpi-value {
+    font-size: clamp(1.125rem, 4vw, 1.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  /* Shimmer subtle for skeletons */
+  .animate-shimmer-subtle {
+    background: linear-gradient(90deg, hsl(var(--muted) / 0.4) 0%, hsl(var(--muted) / 0.7) 50%, hsl(var(--muted) / 0.4) 100%);
+    background-size: 200% 100%;
+    animation: shimmer-subtle 2s ease-in-out infinite;
+  }
+
+  /* Scrollbar hide utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Section header decorative line */
+  .section-header-line::before {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    border-radius: 9999px;
+    background: hsl(var(--primary) / 0.4);
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+}
+
+/* ============================================================
+   ANIMAÇÕES (mantidas + refinadas)
+   ============================================================ */
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(90deg, hsl(var(--gold-dark)) 0%, hsl(var(--gold-light)) 50%, hsl(var(--gold-dark)) 100%);
+  background-size: 200% auto;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+@keyframes pulse-success {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--success) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px hsl(var(--success) / 0);
+  }
+}
+
+.animate-pulse-success {
+  animation: pulse-success 2s ease-in-out infinite;
+}
+
+@keyframes shimmer-subtle {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}

@@ -1,0 +1,11 @@
+export { TabConfig } from './TabConfig';
+export { TabVisaoGeral } from './TabVisaoGeral';
+export { TabRelatorio } from './TabRelatorio';
+export { TabOneShot } from './TabOneShot';
+export { TabCadenciaPerfil } from './TabCadenciaPerfil';
+export { TabChurn } from './TabChurn';
+export { TabCohort } from './TabCohort';
+export { TabBarbeiros } from './TabBarbeiros';
+export { TabAcoesCRM } from './TabAcoesCRM';
+export { TabRoutingBarbeiros } from './TabRoutingBarbeiros';
+export { TabDiagnostico } from './TabDiagnostico';

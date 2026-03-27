@@ -1,0 +1,1 @@
+DELETE FROM mensagem_envios WHERE enviado = false;

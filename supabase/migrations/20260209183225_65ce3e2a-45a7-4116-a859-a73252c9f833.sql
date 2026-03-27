@@ -1,0 +1,1 @@
+DELETE FROM colaborador_folgas WHERE colaborador_id = '1687' AND data IN ('2026-02-25', '2026-02-26') AND tipo = 'avulsa';

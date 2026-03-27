@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.rpc_faturamento_comparacoes(date, date, text, text, text, text, text);

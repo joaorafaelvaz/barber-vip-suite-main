@@ -1,0 +1,16 @@
+project_id = "ftjjkqanssuwumpzqjiu"
+
+[functions.create-user]
+verify_jwt = false
+
+[functions.list-users]
+verify_jwt = false
+
+[functions.update-user]
+verify_jwt = false
+
+[functions.sync-vendas]
+verify_jwt = false
+
+[functions.update-dimensoes]
+verify_jwt = false

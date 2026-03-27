@@ -1,0 +1,1 @@
+ALTER FUNCTION rpc_raiox_clientes_overview_v1 SET statement_timeout = '300s';

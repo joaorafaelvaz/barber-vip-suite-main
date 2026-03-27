@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.rpc_dashboard_period(date, date, text, text);

@@ -1,0 +1,1 @@
+DELETE FROM mensagem_envios WHERE id = 'fd035f3c-87b2-4a2a-a1e5-625ba0ceedc7';
