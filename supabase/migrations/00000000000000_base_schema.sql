@@ -581,11 +581,12 @@ AS $$
   );
 $$;
 
-CREATE OR REPLACE FUNCTION public.app_is_own_profile(p_user_id uuid)
+CREATE OR REPLACE FUNCTION public.app_is_own_profile(check_user_id uuid)
 RETURNS boolean
 LANGUAGE sql STABLE SECURITY DEFINER
+SET search_path = public
 AS $$
-  SELECT p_user_id = auth.uid();
+  SELECT check_user_id = auth.uid();
 $$;
 
 CREATE OR REPLACE FUNCTION public.app_get_user_colaborador_id()
